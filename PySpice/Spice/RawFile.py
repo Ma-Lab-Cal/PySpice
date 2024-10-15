@@ -224,7 +224,7 @@ class RawFileAbc:
 
     ##############################################
 
-    def _read_header_field_line(self, header_line_iterator, expected_label, has_value=True):
+    def _read_header_field_line(self, header_line_iterator, expected_label, has_value=True, retry=True):
 
         """ Read an header line and check it starts with *expected_label*.
 
@@ -240,6 +240,8 @@ class RawFileAbc:
         else:
             label = line[:-1]
         if label != expected_label:
+            if retry:
+                return self._read_header_field_line(header_line_iterator, expected_label, has_value, retry=False)
             raise NameError("Expected label %s instead of %s" % (expected_label, label))
         if has_value:
             return value.strip()

@@ -622,7 +622,8 @@ class NgSpiceShared:
                 func = self._logger.warning
             # elif content.startswith('Warning:'):
             else:
-                self._error_in_stderr = True
+                if 'error' in content.lower():
+                    self._error_in_stderr = True
                 func = self._logger.error
                 if content.strip() == "Note: can't find init file.":
                     self._spinit_not_found = True
