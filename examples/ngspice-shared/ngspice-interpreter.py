@@ -78,7 +78,7 @@ print(ngspice.showmod('c3'))
 ngspice.run()
 print('Plots:', ngspice.plot_names)
 
-print(ngspice.ressource_usage())
+print(ngspice.resource_usage())
 print(ngspice.status())
 
 plot = ngspice.plot(simulation=None, plot_name=ngspice.last_plot)

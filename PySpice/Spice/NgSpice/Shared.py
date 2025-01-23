@@ -1024,7 +1024,7 @@ class NgSpiceShared:
 
     ##############################################
 
-    def ressource_usage(self, *ressources):
+    def resource_usage(self, *resources):
 
         """Print resource usage statistics. If any resources are given, just print the usage of that resource.
 
@@ -1057,10 +1057,10 @@ class NgSpiceShared:
         * everything    All of the above.
         """
 
-        if not ressources:
-            ressources = ['everything']
+        if not resources:
+            resources = ['everything']
 
-        command = 'rusage ' + ' '.join(ressources)
+        command = 'rusage ' + ' '.join(resources)
         lines = self.exec_command(command, join_lines=False)
         values = {}
         for line in lines:
